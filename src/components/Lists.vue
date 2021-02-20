@@ -6,9 +6,8 @@
         <v-spacer></v-spacer>
         <v-btn color="black" text dark><v-icon left>mdi-calculator</v-icon>計算機</v-btn>
       </v-card-title>
-    
 
-        <v-form class="pa-2">
+        <v-form class="pa-2" @submit.prevent="add">
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
@@ -47,7 +46,7 @@
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="1">
-              <v-btn class="ma-2" dark color="primary" @click="add">
+              <v-btn type="submit" class="ma-2" dark color="primary" @click="add">
                 <v-icon left dark>mdi-plus</v-icon>新增
               </v-btn>
             </v-col>
@@ -58,7 +57,7 @@
     <div class="d-flex mb-8 pa-2">
       <v-btn text color="error" @click="lists = [];$emit('sendTotal', totalExpense)"><v-icon left>mdi-delete</v-icon>刪除全部</v-btn>
       <v-spacer></v-spacer>
-      <h3 class="d-inline">總花費：${{ totalExpense }}</h3>
+      <h3 class="d-inline pa-1">總花費：${{ totalExpense }}</h3>
     </div>
 
     <!-- lists -->
@@ -84,14 +83,14 @@ export default {
     name: '',
     expense: '',
     category: '',
-    items: ['飲食', '交通', '娛樂', '學習', '購物', '投資', '日用品', '其他'],
+    items: ['飲食', '交通', '娛樂', '學習', '購物', '投資', '日用品', '其他']
   }),
   computed: {
     totalExpense () {
       let total = 0
-      if(this.lists.length > 0) {
+      if (this.lists.length > 0) {
         let i = 0
-        while(i < this.lists.length) {
+        while (i < this.lists.length) {
           total += this.lists[i].expense
           i++
         }
@@ -116,7 +115,6 @@ export default {
     del (idx) {
       this.lists.splice(idx, 1)
       this.$emit('sendTotal', this.totalExpense)
-
     }
   }
 }

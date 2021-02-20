@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Lists from './components/Lists';
+import Lists from './components/Lists'
 export default {
   name: 'App',
 
@@ -73,7 +73,7 @@ export default {
       this.totalExpense = value
     }
   }
-};
+}
 </script>
 
 <style scoped>
