@@ -25,7 +25,7 @@
                   <v-btn dark small icon @click="isEdit = true"><v-icon button small>mdi-pencil</v-icon></v-btn>
                 </div>
                 <div v-else class="d-flex align-center">
-                  <v-text-field type="number" class="pb-2" dense hide-details v-model="newBudget" dark style="width:80px;"></v-text-field>
+                  <v-text-field type="number" class="pb-2" dense hide-details v-model.number="newBudget" dark style="width:80px;"></v-text-field>
                   <v-btn dark small icon @click="budget = newBudget;isEdit = false;"><v-icon small>mdi-check-bold</v-icon></v-btn>
                 </div>
               </v-chip>
@@ -66,9 +66,6 @@ export default {
     }
   },
   methods: {
-    saveBudget () {
-      this.isEdit = false
-    },
     handleTotal (value) {
       this.totalExpense = value
     }
