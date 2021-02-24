@@ -4,7 +4,7 @@
       <v-card-title class="headline pb-0">
         <span class="font-weight-medium pl-2">新增支出</span>
         <v-spacer></v-spacer>
-        <v-btn color="black" text dark><v-icon left>mdi-calculator</v-icon>計算機</v-btn>
+        <Calculator/>
       </v-card-title>
 
         <v-form class="pa-2" @submit.prevent="add">
@@ -23,7 +23,7 @@
               </v-col>
               <v-col cols="12" sm="6" md="3">
                 <v-text-field
-                  v-model="expense"
+                  v-model.number="expense"
                   filled
                   rounded
                   dense
@@ -77,7 +77,12 @@
 </template>
 
 <script>
+import Calculator from './Calculator'
+
 export default {
+  components: {
+    Calculator
+  },
   data: () => ({
     lists: [],
     name: '',
@@ -104,7 +109,7 @@ export default {
 
       this.lists.push({
         name: this.name,
-        expense: parseInt(this.expense),
+        expense: this.expense,
         category: this.category
       })
       this.name = ''
